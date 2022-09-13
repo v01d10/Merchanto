@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d31765b498ffa574cb30178f4d309ab7, type: 3}
+  m_Name: ResGen1
+  m_EditorClassIdentifier: 
+  res0: {fileID: 11400000, guid: 08a9d0a87eb0e3843956e6fcb3233700, type: 2}
+  res1: {fileID: 11400000, guid: 88691ffb9ad4eea48b84e4005dbb83b5, type: 2}
+  res2: {fileID: 0}
+  res0Mined: 134.03108
+  res1Mined: 21.436613
+  res2Mined: 980
+  genRate: 0.3
+  yield0: 0.8
+  yield1: 0.2
+  yield2: 0
+  genRateUpgadePrice: 100
+  genRateUpgradeLevel: 1
+  deliverySpeed: 0.5
+  deliverySpeedPrice: 100
+  deliverySpeedLevel: 1
+  loadCapacity: 4
+  loadCapPrice: 100
+  loadCapLevel: 1

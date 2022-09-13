@@ -35,6 +35,14 @@ public class resGen : ScriptableObject
     public float loadCapPrice;
     public int loadCapLevel;
 
+[Header("References")]
+    public resourceGenerator resourceGen; 
+
+    void Start()
+    {
+        resGen ResGen = resGen.CreateInstance<resGen>();
+    }
+
     public void genResource()
     {
         if(res0 != null)
@@ -57,7 +65,43 @@ public class resGen : ScriptableObject
         {
             currencyManager.instance.Money -= genRateUpgadePrice;
             genRateUpgradeLevel += 1;
-            genRateUpgadePrice = genRateUpgadePrice * 1.5f;
+            genRateUpgadePrice += genRateUpgadePrice;
+            genRate += 0.3f;
+        }
+        else
+        {
+            Debug.Log("Not enough money...");
         }
     }
+
+    public void delSpeedUp()
+    {
+        if(currencyManager.instance.Money >= deliverySpeedPrice)
+        {
+            currencyManager.instance.Money -= deliverySpeedPrice;
+            deliverySpeedLevel += 1;
+            deliverySpeedPrice += deliverySpeedPrice;
+            deliverySpeed += 0.3f;
+        }
+        else
+        {
+            Debug.Log("Not enough money");
+        }
+    }
+
+    public void loadCapUp()
+    {
+        if(currencyManager.instance.Money >= loadCapPrice)
+        {
+            currencyManager.instance.Money -= loadCapPrice;
+            loadCapLevel += 1;
+            loadCapPrice += loadCapPrice;
+            loadCapacity += loadCapacity * 0.5f;
+        }
+        else
+        {
+            Debug.Log("Not enough money");
+        }      
+    }
+
 }
