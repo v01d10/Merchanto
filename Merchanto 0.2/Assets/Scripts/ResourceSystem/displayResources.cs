@@ -66,7 +66,7 @@ public class displayResources : MonoBehaviour
 
     void onResClick()
     {
-        if(!sellBarOpened)
+        if(!sellBarOpened && ResRaw.resAmount >= 1)
         {
             sellBar.SetActive(true);
             sellBarOpened = true;

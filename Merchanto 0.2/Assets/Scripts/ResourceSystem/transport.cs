@@ -54,7 +54,7 @@ public class transport : MonoBehaviour
         if(returning && !carryResource)
         {
             canCarryAmount = ResGen.loadCapacity;
-            worker.SetDestination(transportPoint.transform.position);
+            moveToGen();
         }
     }
 
@@ -133,8 +133,11 @@ public class transport : MonoBehaviour
             returning = false;
             carryResource = true;
         }
+        else if(ResGen.res0Mined == 0)
+        {
+            return;
+        }
     }
-
 
     public void unloadResource()
     {
@@ -160,5 +163,10 @@ public class transport : MonoBehaviour
 
         returning = true;
         carryResource = false;
+    }
+
+    public void moveToGen()
+    {
+        worker.SetDestination(transportPoint.transform.position);
     }
 }

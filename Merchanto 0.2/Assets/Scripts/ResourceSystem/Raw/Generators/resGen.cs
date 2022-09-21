@@ -14,14 +14,13 @@ public class resGen : ScriptableObject
     public float res1Mined;
     public float res2Mined;
 
-[Header("Gen Rates")]
+[Header("Gen Rate")]
     public float genRate;
 
     public float yield0;
     public float yield1;
     public float yield2;
 
-[Header("Gen Rate Upgrade")]
     public float genRateUpgadePrice;
     public int genRateUpgradeLevel;
 
@@ -35,8 +34,6 @@ public class resGen : ScriptableObject
     public float loadCapPrice;
     public int loadCapLevel;
 
-[Header("References")]
-    public resourceGenerator resourceGen; 
 
     void Start()
     {
@@ -65,8 +62,8 @@ public class resGen : ScriptableObject
         {
             currencyManager.instance.Money -= genRateUpgadePrice;
             genRateUpgradeLevel += 1;
-            genRateUpgadePrice += genRateUpgadePrice;
-            genRate += 0.3f;
+            genRateUpgadePrice = genRateUpgadePrice*genRateUpgradeLevel;
+            genRate += 0.2f;
         }
         else
         {
@@ -80,8 +77,8 @@ public class resGen : ScriptableObject
         {
             currencyManager.instance.Money -= deliverySpeedPrice;
             deliverySpeedLevel += 1;
-            deliverySpeedPrice += deliverySpeedPrice;
-            deliverySpeed += 0.3f;
+            deliverySpeedPrice = deliverySpeedPrice*deliverySpeedLevel;
+            deliverySpeed += 0.03f;
         }
         else
         {
@@ -95,8 +92,8 @@ public class resGen : ScriptableObject
         {
             currencyManager.instance.Money -= loadCapPrice;
             loadCapLevel += 1;
-            loadCapPrice += loadCapPrice;
-            loadCapacity += loadCapacity * 0.5f;
+            loadCapPrice = loadCapPrice*loadCapLevel;
+            loadCapacity += loadCapacity * 0.2f;
         }
         else
         {

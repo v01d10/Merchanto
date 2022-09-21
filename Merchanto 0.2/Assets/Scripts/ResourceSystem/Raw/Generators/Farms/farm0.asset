@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d31765b498ffa574cb30178f4d309ab7, type: 3}
-  m_Name: ResGen1
+  m_Name: farm0
   m_EditorClassIdentifier: 
   res0: {fileID: 11400000, guid: 08a9d0a87eb0e3843956e6fcb3233700, type: 2}
-  res1: {fileID: 11400000, guid: 88691ffb9ad4eea48b84e4005dbb83b5, type: 2}
+  res1: {fileID: 0}
   res2: {fileID: 0}
-  res0Mined: 134.03108
-  res1Mined: 21.436613
-  res2Mined: 980
-  genRate: 0.3
-  yield0: 0.8
-  yield1: 0.2
+  res0Mined: 21.318867
+  res1Mined: 0
+  res2Mined: 0
+  genRate: 0.1
+  yield0: 1
+  yield1: 0
   yield2: 0
-  genRateUpgadePrice: 100
-  genRateUpgradeLevel: 1
-  deliverySpeed: 0.5
-  deliverySpeedPrice: 100
-  deliverySpeedLevel: 1
+  genRateUpgadePrice: 506.25
+  genRateUpgradeLevel: 5
+  deliverySpeed: 0.3
+  deliverySpeedPrice: 400
+  deliverySpeedLevel: 3
   loadCapacity: 4
   loadCapPrice: 100
   loadCapLevel: 1

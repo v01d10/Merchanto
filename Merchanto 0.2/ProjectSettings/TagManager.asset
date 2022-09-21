@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ResGen
   - TownHall
+  - TownfolkTarget
   layers:
   - Default
   - TransparentFX

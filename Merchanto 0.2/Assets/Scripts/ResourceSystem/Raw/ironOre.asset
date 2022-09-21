@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a99ef8444f5c5df419392ec89cd715be, type: 3}
-  m_Name: Corn
+  m_Name: ironOre
   m_EditorClassIdentifier: 
   resIcon: {fileID: 0}
-  resName: Corn
-  resAmount: 90.57998
-  resPrice: 0.1
+  resName: Iron
+  resAmount: 0
+  resPrice: 1

@@ -7,8 +7,12 @@ using TMPro;
 public class resourceGenerator : MonoBehaviour
 {
     public resGen ResGen;
+    
+    public string generatorName;
+    public TextMeshProUGUI genNameText;
 
     public GameObject resGenPanel;
+    public bool resGenPanelOpened;
 
 [Header("Gen Rate")]
     public TextMeshProUGUI genRateLvlText;
@@ -35,25 +39,37 @@ public class resourceGenerator : MonoBehaviour
     public GameObject state0;
     public GameObject state1;
 
-    bool state0Active = true;
-    bool state1Active = false;
+    public GameObject priceTag;
+    public TextMeshProUGUI priceText;
+    public float buildPrice;
+
+    public bool state0Active = true;
+    public bool state1Active = false;
+    
+    public buildMenu BuildMenu;
 
 [Header("Transport")]
     public transport Trans;
+    public GameObject transport;
 
     void Start()
     {
-        activateButtons();
+        priceText.text = buildPrice.ToString() + "$";
 
-        updateRateText();
-        updateSpeedText();
-        updateCapText();
+        if(resGenPanelOpened)
+        {
+            activateUpgradeButtons();
+
+            updateRateText();
+            updateSpeedText();
+            updateCapText();           
+        }
+
     }
 
     void Update()
     {
         StateMachine();
-        ResGen.genResource();
     }
 
     public void StateMachine()
@@ -61,17 +77,60 @@ public class resourceGenerator : MonoBehaviour
         if(state0Active)
         {
             state0.SetActive(true);
+            priceTag.SetActive(true);
+            transport.SetActive(false);
         }
         else if(state1Active)
         {
-            state0Active = false;
-
-            state0.SetActive(false);
-            state1.SetActive(true);
+            ResGen.genResource();
         }
     }
 
-    public void activateButtons()
+    void OnMouseOver()
+    {
+        if(Input.GetMouseButtonDown(0) && state0Active && currencyManager.instance.Money >= buildPrice)
+        {
+            buildGen();
+        }
+
+        if(Input.GetMouseButtonDown(0) && !resGenPanelOpened && state1Active)
+        {
+            openGenPanel();
+        }
+        
+        else if(Input.GetMouseButtonDown(0) && resGenPanelOpened)
+        {
+            resGenPanel.SetActive(false);
+            resGenPanelOpened = false;
+        }
+    }
+
+    public void buildGen()
+    {
+            currencyManager.instance.Money -= buildPrice;
+            state0Active = false;
+            state1Active = true;
+
+            state1.SetActive(true);
+            state0.SetActive(false);
+            priceTag.SetActive(false);
+            transport.SetActive(true);
+    }
+
+    public void openGenPanel()
+    {
+            genNameText.text = generatorName;
+            resGenPanel.SetActive(true);
+            resGenPanelOpened = true;
+
+            activateUpgradeButtons();
+
+            updateRateText();
+            updateSpeedText();
+            updateCapText();  
+    }
+
+    public void activateUpgradeButtons()
     {
         rateUpButton.onClick.AddListener(ResGen.genRateUp);
         rateUpButton.onClick.AddListener(updateRateText);
