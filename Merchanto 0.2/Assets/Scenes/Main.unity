@@ -4213,8 +4213,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1000158122}
-        m_TargetAssemblyTypeName: rawGenType, Assembly-CSharp
+      - m_Target: {fileID: -7087448371091246572, guid: cc038acd37d5d4a4987ee0b42344dfa3,
+          type: 3}
+        m_TargetAssemblyTypeName: rawBuildPlot, Assembly-CSharp
         m_MethodName: build
         m_Mode: 1
         m_Arguments:
@@ -5938,8 +5939,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1000158122}
-        m_TargetAssemblyTypeName: rawGenType, Assembly-CSharp
+      - m_Target: {fileID: -7087448371091246572, guid: cc038acd37d5d4a4987ee0b42344dfa3,
+          type: 3}
+        m_TargetAssemblyTypeName: rawBuildPlot, Assembly-CSharp
         m_MethodName: build
         m_Mode: 1
         m_Arguments:
@@ -9613,7 +9615,7 @@ GameObject:
   - component: {fileID: 836500648}
   m_Layer: 0
   m_Name: transportArea
-  m_TagString: ResGen
+  m_TagString: RawGen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10398,11 +10400,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1000158122}
         m_TargetAssemblyTypeName: rawGenType, Assembly-CSharp
         m_MethodName: build
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: -7087448371091246572, guid: cc038acd37d5d4a4987ee0b42344dfa3,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: rawBuildPlot, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11082,8 +11083,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1000158122}
-        m_TargetAssemblyTypeName: rawGenType, Assembly-CSharp
+      - m_Target: {fileID: -7087448371091246572, guid: cc038acd37d5d4a4987ee0b42344dfa3,
+          type: 3}
+        m_TargetAssemblyTypeName: rawBuildPlot, Assembly-CSharp
         m_MethodName: build
         m_Mode: 1
         m_Arguments:
@@ -11502,8 +11504,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1000158122}
-        m_TargetAssemblyTypeName: rawGenType, Assembly-CSharp
+      - m_Target: {fileID: -7087448371091246572, guid: cc038acd37d5d4a4987ee0b42344dfa3,
+          type: 3}
+        m_TargetAssemblyTypeName: rawBuildPlot, Assembly-CSharp
         m_MethodName: build
         m_Mode: 1
         m_Arguments:
@@ -12238,6 +12241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rawTypeList: []
   rawGenModelList: []
+  rawGenPrices: 9a020000e70300003505000082060000cf070000
   rawTypeHolder: {fileID: 2010567958}
 --- !u!1 &1101529888
 GameObject:
@@ -13401,8 +13405,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1000158122}
-        m_TargetAssemblyTypeName: rawGenType, Assembly-CSharp
+      - m_Target: {fileID: -7087448371091246572, guid: cc038acd37d5d4a4987ee0b42344dfa3,
+          type: 3}
+        m_TargetAssemblyTypeName: rawBuildPlot, Assembly-CSharp
         m_MethodName: build
         m_Mode: 1
         m_Arguments:
@@ -13891,7 +13896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7811ab2a037616a4cbba7545bf3f0065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RawGen: {fileID: 0}
+  RawGen: {fileID: 11400000, guid: 25ebba080fee598449e61fe549f543f7, type: 2}
   res0: {fileID: 11400000, guid: 08a9d0a87eb0e3843956e6fcb3233700, type: 2}
   res1: {fileID: 0}
   res2: {fileID: 0}
@@ -14976,7 +14981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439b3059f1e8d704a8724f9a28d4283a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RawGen: {fileID: 0}
+  RawGen: {fileID: 11400000, guid: 25ebba080fee598449e61fe549f543f7, type: 2}
   generatorName: '- Farm 1. -'
   genNameText: {fileID: 500112862}
   resGenPanel: {fileID: 1012973243}
@@ -16243,8 +16248,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1000158122}
-        m_TargetAssemblyTypeName: rawGenType, Assembly-CSharp
+      - m_Target: {fileID: -7087448371091246572, guid: cc038acd37d5d4a4987ee0b42344dfa3,
+          type: 3}
+        m_TargetAssemblyTypeName: rawBuildPlot, Assembly-CSharp
         m_MethodName: build
         m_Mode: 1
         m_Arguments:
@@ -19812,8 +19818,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1000158122}
-        m_TargetAssemblyTypeName: rawGenType, Assembly-CSharp
+      - m_Target: {fileID: -7087448371091246572, guid: cc038acd37d5d4a4987ee0b42344dfa3,
+          type: 3}
+        m_TargetAssemblyTypeName: rawBuildPlot, Assembly-CSharp
         m_MethodName: build
         m_Mode: 1
         m_Arguments:
