@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using static currencyManager;
 
 public class resourceGenerator : MonoBehaviour
 {
-    public resGen ResGen;
+    public rawGen RawGen;
     
     public string generatorName;
     public TextMeshProUGUI genNameText;
@@ -82,13 +83,13 @@ public class resourceGenerator : MonoBehaviour
         }
         else if(state1Active)
         {
-            ResGen.genResource();
+            RawGen.genResource();
         }
     }
 
     void OnMouseOver()
     {
-        if(Input.GetMouseButtonDown(0) && state0Active && currencyManager.instance.Money >= buildPrice)
+        if(Input.GetMouseButtonDown(0) && state0Active && CurrencyManager.Money >= buildPrice)
         {
             buildGen();
         }
@@ -107,7 +108,7 @@ public class resourceGenerator : MonoBehaviour
 
     public void buildGen()
     {
-            currencyManager.instance.Money -= buildPrice;
+            CurrencyManager.Money -= buildPrice;
             state0Active = false;
             state1Active = true;
 
@@ -132,35 +133,35 @@ public class resourceGenerator : MonoBehaviour
 
     public void activateUpgradeButtons()
     {
-        rateUpButton.onClick.AddListener(ResGen.genRateUp);
+        rateUpButton.onClick.AddListener(RawGen.genRateUp);
         rateUpButton.onClick.AddListener(updateRateText);
 
-        speedUpButton.onClick.AddListener(ResGen.delSpeedUp);
+        speedUpButton.onClick.AddListener(RawGen.delSpeedUp);
         speedUpButton.onClick.AddListener(updateSpeedText);
 
-        capUpButtton.onClick.AddListener(ResGen.loadCapUp);
+        capUpButtton.onClick.AddListener(RawGen.loadCapUp);
         capUpButtton.onClick.AddListener(updateCapText);
     }
 
     public void updateRateText()
     {
-        genRateLvlText.text = ResGen.genRateUpgradeLevel.ToString();
-        genRateText.text = ResGen.genRate.ToString("F2");
-        genRatePriceText.text = ResGen.genRateUpgadePrice.ToString("F2");
+        genRateLvlText.text = RawGen.genRateUpgradeLevel.ToString();
+        genRateText.text = RawGen.genRate.ToString("F2");
+        genRatePriceText.text = RawGen.genRateUpgadePrice.ToString("F2");
     }
 
     public void updateSpeedText()
     {
-        delSpeedLvlText.text = ResGen.deliverySpeedLevel.ToString();
-        delSpeedText.text = ResGen.deliverySpeed.ToString("F2");
-        delSpeedPriceText.text = ResGen.deliverySpeedPrice.ToString("F2");
+        delSpeedLvlText.text = RawGen.deliverySpeedLevel.ToString();
+        delSpeedText.text = RawGen.deliverySpeed.ToString("F2");
+        delSpeedPriceText.text = RawGen.deliverySpeedPrice.ToString("F2");
     }
 
     public void updateCapText()
     {  
-        loadCapLvlText.text = ResGen.loadCapLevel.ToString();
-        loadCapText.text = ResGen.loadCapacity.ToString("F2");
-        loadCapPriceText.text = ResGen.loadCapPrice.ToString("F2");
+        loadCapLvlText.text = RawGen.loadCapLevel.ToString();
+        loadCapText.text = RawGen.loadCapacity.ToString("F2");
+        loadCapPriceText.text = RawGen.loadCapPrice.ToString("F2");
     }
 
 

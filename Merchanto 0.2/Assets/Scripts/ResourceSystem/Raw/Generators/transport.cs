@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class transport : MonoBehaviour
 {
-    public resGen ResGen;
+    public rawGen RawGen;
 
 [Header("Resources")]
     public resRaw res0;   
@@ -40,7 +40,7 @@ public class transport : MonoBehaviour
     {
         StateMachine();
 
-        speed = ResGen.deliverySpeed;
+        speed = RawGen.deliverySpeed;
         worker.speed = speed;
     }
 
@@ -53,14 +53,14 @@ public class transport : MonoBehaviour
 
         if(returning && !carryResource)
         {
-            canCarryAmount = ResGen.loadCapacity;
+            canCarryAmount = RawGen.loadCapacity;
             moveToGen();
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("ResGen"))
+        if(other.CompareTag("RawGen"))
         {
             loadRes2();
         }
@@ -72,20 +72,20 @@ public class transport : MonoBehaviour
 
     public void loadRes2()
     {
-        if(ResGen.res2Mined >= canCarryAmount && !carryResource)
+        if(RawGen.res2Mined >= canCarryAmount && !carryResource)
         {
             print("loading");
             carry2Amount += canCarryAmount;
-            ResGen.res2Mined -= carry2Amount;
+            RawGen.res2Mined -= carry2Amount;
             canCarryAmount -= carry2Amount;
 
             returning = false;
             carryResource = true;
         }
-        else if(ResGen.res2Mined <= canCarryAmount && !carryResource)
+        else if(RawGen.res2Mined <= canCarryAmount && !carryResource)
         {
-            carry2Amount += ResGen.res2Mined;
-            ResGen.res2Mined -= carry2Amount;
+            carry2Amount += RawGen.res2Mined;
+            RawGen.res2Mined -= carry2Amount;
             canCarryAmount -= carry2Amount;
 
             loadRes1();
@@ -94,19 +94,19 @@ public class transport : MonoBehaviour
 
     public void loadRes1()
     {
-        if(ResGen.res1Mined > canCarryAmount)
+        if(RawGen.res1Mined > canCarryAmount)
         {
             carry1Amount += canCarryAmount;
-            ResGen.res1Mined -= carry1Amount;
+            RawGen.res1Mined -= carry1Amount;
             canCarryAmount -= carry1Amount;
 
             returning = false;
             carryResource = true;
         }
-        else if(ResGen.res1Mined <= canCarryAmount)
+        else if(RawGen.res1Mined <= canCarryAmount)
         {
-            carry1Amount += ResGen.res1Mined;
-            ResGen.res1Mined -= carry1Amount;
+            carry1Amount += RawGen.res1Mined;
+            RawGen.res1Mined -= carry1Amount;
             canCarryAmount -= carry1Amount;
 
             loadRes0();
@@ -115,25 +115,25 @@ public class transport : MonoBehaviour
 
     public void loadRes0()
     {
-        if(ResGen.res0Mined >= canCarryAmount)
+        if(RawGen.res0Mined >= canCarryAmount)
         {
             carry0Amount += canCarryAmount;
-            ResGen.res0Mined -= carry0Amount;
+            RawGen.res0Mined -= carry0Amount;
             canCarryAmount -= carry0Amount;
 
             returning = false;
             carryResource = true;
         }
-        else if(ResGen.res0Mined <= canCarryAmount)
+        else if(RawGen.res0Mined <= canCarryAmount)
         {
-            carry0Amount += ResGen.res0Mined;
-            ResGen.res0Mined -= carry0Amount;
+            carry0Amount += RawGen.res0Mined;
+            RawGen.res0Mined -= carry0Amount;
             canCarryAmount -= carry0Amount;
 
             returning = false;
             carryResource = true;
         }
-        else if(ResGen.res0Mined == 0)
+        else if(RawGen.res0Mined == 0)
         {
             return;
         }

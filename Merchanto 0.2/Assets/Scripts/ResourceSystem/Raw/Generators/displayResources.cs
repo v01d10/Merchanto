@@ -62,6 +62,7 @@ public class displayResources : MonoBehaviour
     {
         ResRaw.resAmount -= sellAmount;
         currency.Money += sellPrice;
+        sellBar.SetActive(false);
     }
 
     void onResClick()

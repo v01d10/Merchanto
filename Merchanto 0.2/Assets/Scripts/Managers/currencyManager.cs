@@ -5,18 +5,14 @@ using TMPro;
 
 public class currencyManager : MonoBehaviour
 {
-    public static currencyManager instance;
-
+    public static currencyManager CurrencyManager;
+    void Awake(){CurrencyManager = this;}
+    
     public float Money;
     public float Nuggets;
 
     public TextMeshProUGUI moneyText;
     public TextMeshProUGUI nuggetText;
-
-    void Start()
-    {
-        instance = this;
-    }
 
     void Update()
     {

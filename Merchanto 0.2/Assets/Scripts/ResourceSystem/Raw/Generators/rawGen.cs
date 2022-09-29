@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static currencyManager;
 
 [CreateAssetMenu(fileName ="ResGen", menuName ="Resource Generator")]
-public class resGen : ScriptableObject 
+public class rawGen : ScriptableObject 
 {
     public resRaw res0;
     public resRaw res1;
@@ -37,7 +38,7 @@ public class resGen : ScriptableObject
 
     void Start()
     {
-        resGen ResGen = resGen.CreateInstance<resGen>();
+        rawGen ResGen = rawGen.CreateInstance<rawGen>();
     }
 
     public void genResource()
@@ -58,9 +59,9 @@ public class resGen : ScriptableObject
 
     public void genRateUp()
     {
-        if(currencyManager.instance.Money >= genRateUpgadePrice)
+        if(CurrencyManager.Money >= genRateUpgadePrice)
         {
-            currencyManager.instance.Money -= genRateUpgadePrice;
+            CurrencyManager.Money -= genRateUpgadePrice;
             genRateUpgradeLevel += 1;
             genRateUpgadePrice = genRateUpgadePrice*genRateUpgradeLevel;
             genRate += 0.2f;
@@ -73,9 +74,9 @@ public class resGen : ScriptableObject
 
     public void delSpeedUp()
     {
-        if(currencyManager.instance.Money >= deliverySpeedPrice)
+        if(CurrencyManager.Money >= deliverySpeedPrice)
         {
-            currencyManager.instance.Money -= deliverySpeedPrice;
+            CurrencyManager.Money -= deliverySpeedPrice;
             deliverySpeedLevel += 1;
             deliverySpeedPrice = deliverySpeedPrice*deliverySpeedLevel;
             deliverySpeed += 0.03f;
@@ -88,9 +89,9 @@ public class resGen : ScriptableObject
 
     public void loadCapUp()
     {
-        if(currencyManager.instance.Money >= loadCapPrice)
+        if(CurrencyManager.Money >= loadCapPrice)
         {
-            currencyManager.instance.Money -= loadCapPrice;
+            CurrencyManager.Money -= loadCapPrice;
             loadCapLevel += 1;
             loadCapPrice = loadCapPrice*loadCapLevel;
             loadCapacity += loadCapacity * 0.2f;

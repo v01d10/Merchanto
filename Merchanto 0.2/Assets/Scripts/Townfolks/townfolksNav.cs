@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class townfolksNav : MonoBehaviour
 {
+    public townfolkManager tM;
     public Transform nextTarget;
 
     public List<Transform> targets;
@@ -16,6 +17,13 @@ public class townfolksNav : MonoBehaviour
 
     void Start()
     {
+        tM = GetComponentInParent<townfolkManager>();
+
+        foreach (Transform target in tM.wanderTargets)
+        {
+            targets.Add(target);
+        }
+
         moveToTarget();
         moving = false;
     }
@@ -40,7 +48,7 @@ public class townfolksNav : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if(other.CompareTag("TownfolkTarget"))
         {

@@ -38,7 +38,7 @@ public class workshopHandla : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine("process");
+        StartCoroutine("Process");
     }
 
     void Update()
@@ -56,7 +56,7 @@ public class workshopHandla : MonoBehaviour
         }
     }
 
-    IEnumerator process()
+    IEnumerator Process()
     {
         shopSO.checkResource();
 
@@ -125,9 +125,9 @@ public class workshopHandla : MonoBehaviour
 
     public void addWorker()
     {
-        if(tManager.townfolks >= 1 && shopSO.workers < shopSO.maxWorkers)
+        if(tManager.freeTownfolksAmount >= 1 && shopSO.workers < shopSO.maxWorkers)
         {
-            tManager.townfolks -= 1;
+            tManager.freeTownfolksAmount -= 1;
             shopSO.workers += 1;
 
             workerText.text = shopSO.workers.ToString();
@@ -139,7 +139,7 @@ public class workshopHandla : MonoBehaviour
     {
         if(shopSO.workers >= 1)
         {
-            tManager.townfolks += 1;
+            tManager.freeTownfolksAmount += 1;
             shopSO.workers -= 1;
 
             workerText.text = shopSO.workers.ToString();
