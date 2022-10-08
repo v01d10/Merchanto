@@ -11,7 +11,7 @@ public class rawGenBuild : MonoBehaviour
     private void Awake() => RawGenBuild = this;
     public List<rawGenType> rawTypeList;
     public List<GameObject> rawGenPrefabs;
-    public List<Action> rawGenTypes = new List<Action>();
+    public List<Action> rawGenBuildActions = new List<Action>();
     public List<int> rawGenPrices;
 
     public static GameObject rawBuildPanel;
@@ -19,8 +19,9 @@ public class rawGenBuild : MonoBehaviour
 
     public static bool rawBuildPanelOpened;
 
+    public Transform genTransform;
     public Transform plotTranform;
-    public int selectedID;
+    public int selPlotID;
 
     void Start()
     {
@@ -41,8 +42,8 @@ public class rawGenBuild : MonoBehaviour
 
     public void setTypes()
     {
-        rawGenTypes.Add(buildRaw0);
-        rawGenTypes.Add(buildRaw1);
+        rawGenBuildActions.Add(buildRaw0);
+        rawGenBuildActions.Add(buildRaw1);
     }
 
     public void buildRaw0()
@@ -57,13 +58,13 @@ public class rawGenBuild : MonoBehaviour
 
     public void setPlotTransform()
     {
-       plotTranform = bsManager.rawPlotList[selectedID].transform;
+       plotTranform = bsManager.rawPlotList[selPlotID].transform;
 
     }
 
     public void disablePlot()
     {
-        bsManager.rawPlotList[selectedID].buildPlotPrefab.SetActive(false);
-        bsManager.rawPlotList[selectedID].rawBuildCollider.enabled = !enabled;
+        bsManager.rawPlotList[selPlotID].buildPlotPrefab.SetActive(false);
+        bsManager.rawPlotList[selPlotID].rawBuildCollider.enabled = !enabled;
     }
 }

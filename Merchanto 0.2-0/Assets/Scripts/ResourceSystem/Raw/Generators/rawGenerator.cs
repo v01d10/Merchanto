@@ -7,6 +7,7 @@ using static rawGeneratorUI;
 using static rawBuildPlot;
 using static buildStateManager;
 using static currencyManager;
+using UnityEngine.EventSystems;
 
 public class rawGenerator : MonoBehaviour
 {
@@ -52,8 +53,6 @@ public class rawGenerator : MonoBehaviour
 
     public bool state0Active = true;
     public bool state1Active = false;
-    
-    public buildMenu BuildMenu;
 
 [Header("Transport")]
     public GameObject transport;
@@ -61,15 +60,6 @@ public class rawGenerator : MonoBehaviour
     void Start()
     {
         priceText.text = buildPrice.ToString() + "$";
-
-        if(resGenPanelOpened)
-        {
-            activateUpgradeButtons();
-
-            updateRateText();
-            updateSpeedText();
-            updateCapText();           
-        }
     }
 
     void Update()
@@ -93,7 +83,7 @@ public class rawGenerator : MonoBehaviour
 
     void OnMouseOver()
     {
-        if(Input.GetMouseButtonDown(0) && state0Active && CurrencyManager.Money >= buildPrice)
+        if(Input.GetMouseButtonDown(0) && state0Active && CurrencyManager.Money >= buildPrice && ! EventSystem.current.IsPointerOverGameObject())
         {
             buildGen();
             bsManager.rawGenList.Add(this);
@@ -101,14 +91,14 @@ public class rawGenerator : MonoBehaviour
             transport.GetComponent<rawTransport>().rawParentID = rawGenID;
         }
 
-        if(Input.GetMouseButtonDown(0) && !resGenPanelOpened && state1Active)
+        if(Input.GetMouseButtonDown(0) && !resGenPanelOpened && state1Active && ! EventSystem.current.IsPointerOverGameObject())
         {
-            rawGenUI.selRawID = rawGenID;
             openGenPanel();
         }
         
-        else if(Input.GetMouseButtonDown(0) && resGenPanelOpened)
+        else if(Input.GetMouseButtonDown(0) && resGenPanelOpened && ! EventSystem.current.IsPointerOverGameObject())
         {
+            deactivateUpgradeButtons();
             rawGenUI.resGenPanel.SetActive(false);
             resGenPanelOpened = false;
         }
@@ -116,6 +106,10 @@ public class rawGenerator : MonoBehaviour
 
     public void buildGen()
     {
+            Transform parentTransform = this.transform.parent;
+            this.transform.SetParent(null);
+            Destroy(parentTransform.gameObject);
+
             CurrencyManager.Money -= buildPrice;
             state0Active = false;
             state1Active = true;
@@ -132,14 +126,13 @@ public class rawGenerator : MonoBehaviour
             rawGenUI.resGenPanel.SetActive(true);
             resGenPanelOpened = true;
 
+            rawGenUI.selRawID = rawGenID;
             activateUpgradeButtons();
 
             updateRateText();
             updateSpeedText();
             updateCapText();  
     }
-
-
 
 public void genResource()
     {
@@ -159,12 +152,13 @@ public void genResource()
 
     public void genRateUp()
     {
-        if(CurrencyManager.Money >= genRatePrice)
+        if(CurrencyManager.Money >= bsManager.rawGenList[rawGenUI.selRawID].genRatePrice)
         {
             CurrencyManager.Money -= bsManager.rawGenList[rawGenUI.selRawID].genRatePrice;
             bsManager.rawGenList[rawGenUI.selRawID].genRateLvl += 1;
             bsManager.rawGenList[rawGenUI.selRawID].genRatePrice = bsManager.rawGenList[rawGenUI.selRawID].genRatePrice * bsManager.rawGenList[rawGenID].genRateLvl;
             bsManager.rawGenList[rawGenUI.selRawID].genRate += 0.2f;
+            updateRateText();
         }
         else
         {
@@ -174,12 +168,13 @@ public void genResource()
 
     public void delSpeedUp()
     {
-        if(CurrencyManager.Money >= delSpeedPrice)
+        if(bsManager.rawGenList[rawGenUI.selRawID].delSpeedPrice <= CurrencyManager.Money)
         {
-            CurrencyManager.Money -= delSpeedPrice;
-            delSpeedLvl += 1;
-            delSpeedPrice = delSpeedPrice*delSpeedLvl;
-            delSpeed += 0.03f;
+            CurrencyManager.Money -= bsManager.rawGenList[rawGenUI.selRawID].delSpeedPrice;
+            bsManager.rawGenList[rawGenUI.selRawID].delSpeedLvl += 1;
+            bsManager.rawGenList[rawGenUI.selRawID].delSpeedPrice = bsManager.rawGenList[rawGenUI.selRawID].delSpeedPrice*1.5f;
+            bsManager.rawGenList[rawGenUI.selRawID].delSpeed += 0.03f;
+            updateSpeedText();
         }
         else
         {
@@ -189,12 +184,13 @@ public void genResource()
 
     public void loadCapUp()
     {
-        if(CurrencyManager.Money >= loadCapPrice)
+        if(CurrencyManager.Money >= bsManager.rawGenList[rawGenUI.selRawID].loadCapPrice)
         {
-            CurrencyManager.Money -= loadCapPrice;
-            loadCapLvl += 1;
-            loadCapPrice = loadCapPrice*loadCapLvl;
-            loadCap += loadCap * 0.2f;
+            CurrencyManager.Money -= bsManager.rawGenList[rawGenUI.selRawID].loadCapPrice;
+            bsManager.rawGenList[rawGenUI.selRawID].loadCapLvl += 1;
+            bsManager.rawGenList[rawGenUI.selRawID].loadCapPrice = bsManager.rawGenList[rawGenUI.selRawID].loadCapPrice*bsManager.rawGenList[rawGenUI.selRawID].loadCapLvl;
+            bsManager.rawGenList[rawGenUI.selRawID].loadCap += loadCap * 0.2f;
+            updateCapText();
         }
         else
         {
@@ -204,14 +200,16 @@ public void genResource()
 
     public void activateUpgradeButtons()
     {
-        rawGenUI.rateUpButton.onClick.AddListener(bsManager.rawGenList[rawGenUI.selRawID].genRateUp);
-        rawGenUI.rateUpButton.onClick.AddListener(updateRateText);
+        rawGenUI.rateUpButton.onClick.AddListener(genRateUp);
+        rawGenUI.speedUpButton.onClick.AddListener(delSpeedUp);
+        rawGenUI.capUpButtton.onClick.AddListener(loadCapUp);
+    }
 
-        rawGenUI.speedUpButton.onClick.AddListener(bsManager.rawGenList[rawGenUI.selRawID].delSpeedUp);
-        rawGenUI.speedUpButton.onClick.AddListener(updateSpeedText);
-
-        rawGenUI.capUpButtton.onClick.AddListener(bsManager.rawGenList[rawGenUI.selRawID].loadCapUp);
-        rawGenUI.capUpButtton.onClick.AddListener(updateCapText);
+    public void deactivateUpgradeButtons()
+    {
+        rawGenUI.rateUpButton.onClick.RemoveAllListeners();
+        rawGenUI.speedUpButton.onClick.RemoveAllListeners();
+        rawGenUI.capUpButtton.onClick.RemoveAllListeners();
     }
 
     public void updateRateText()
@@ -235,4 +233,3 @@ public void genResource()
         rawGenUI.loadCapPriceText.text = bsManager.rawGenList[rawGenUI.selRawID].loadCapPrice.ToString("F2");
     }
 }
-

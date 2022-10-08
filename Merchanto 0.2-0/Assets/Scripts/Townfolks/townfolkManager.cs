@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static townfolk;
 
 [System.Serializable]
 public class townfolkManager : MonoBehaviour
@@ -11,7 +12,6 @@ public class townfolkManager : MonoBehaviour
     public float totalHappiness;
 
     public static List<townfolk> Townfolks = new List<townfolk>();
-    public List<GameObject> townfolks = new List<GameObject>();
 
     public List<string> mNames = new List<string>();
     public List<string> fNames = new List<string>();
@@ -25,15 +25,20 @@ public class townfolkManager : MonoBehaviour
     {
         for (int i = 0; i < townfolksMax; i++)
         {
-            createFolk();
+            spawnFolk();
         }
     }
 
-    public void createFolk()
+    public void spawnFolk()
     {
         int mPrefabID = UnityEngine.Random.Range(0, mPrefabs.Count);
         int fPrefabID = UnityEngine.Random.Range(0, fPrefabs.Count);
         
         Instantiate(mPrefabs[mPrefabID], this.transform);
+    }
+
+    public void addFolk(townfolk folk)
+    {
+        Townfolks.Add(folk);
     } 
 }

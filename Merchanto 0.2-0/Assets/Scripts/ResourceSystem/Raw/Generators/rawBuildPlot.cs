@@ -4,6 +4,7 @@ using UnityEngine;
 using static rawGenBuild;
 using static rawGenType;
 using static buildStateManager;
+using UnityEngine.EventSystems;
 
 public class rawBuildPlot : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class rawBuildPlot : MonoBehaviour
 
     public GameObject buildPlotPrefab;
     public BoxCollider rawBuildCollider;
+    public Transform genTransform;
 
     void Start()
     {
@@ -23,7 +25,7 @@ public class rawBuildPlot : MonoBehaviour
 
     void OnMouseOver()
     {
-        if(Input.GetMouseButtonDown(0)) {openRawBuildPanel(); RawGenBuild.selectedID = plotID; RawGenBuild.setPlotTransform();}
+        if(Input.GetMouseButtonDown(0) && ! EventSystem.current.IsPointerOverGameObject()) {openRawBuildPanel(); RawGenBuild.selPlotID = plotID; RawGenBuild.setPlotTransform();}
     }
     
 }

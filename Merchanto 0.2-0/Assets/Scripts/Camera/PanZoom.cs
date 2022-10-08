@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PanZoom : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class PanZoom : MonoBehaviour
             touchStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
-        if(Input.touchCount == 2){
+        if(Input.touchCount == 2 && !EventSystem.current.IsPointerOverGameObject()){
             Touch touchZero = Input.GetTouch(0);
             Touch touchOne = Input.GetTouch(1);
 
@@ -28,7 +29,7 @@ public class PanZoom : MonoBehaviour
             Zoom(difference * 0.01f);
         }
 
-        else if(Input.GetMouseButton(0)){
+        else if(Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject()){
             Vector3 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Camera.main.transform.position += direction;
         }

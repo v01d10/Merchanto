@@ -19,14 +19,14 @@ public class rawGenType : MonoBehaviour
         if(CurrencyManager.Money >= RawGenBuild.rawGenPrices[id])
         {
             rawGenBuild.openRawBuildPanel();
-            RawGenBuild.rawGenTypes[id]();
+            RawGenBuild.rawGenBuildActions[id]();
 
             CurrencyManager.Money -= RawGenBuild.rawGenPrices[id];
             
             Instantiate(RawGenBuild.rawGenPrefabs[id], RawGenBuild.plotTranform);
             RawGenBuild.disablePlot();
     
-            print(RawGenBuild.selectedID);
+            print(RawGenBuild.selPlotID);
 
         }
 

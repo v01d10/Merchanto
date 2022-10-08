@@ -507,7 +507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7811ab2a037616a4cbba7545bf3f0065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RawGen: {fileID: 11400000, guid: 25ebba080fee598449e61fe549f543f7, type: 2}
+  rawParentID: 0
   res0: {fileID: 11400000, guid: 08a9d0a87eb0e3843956e6fcb3233700, type: 2}
   res1: {fileID: 0}
   res2: {fileID: 0}
@@ -715,11 +715,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2752341265348457234}
   - component: {fileID: 2752341265348457235}
-  - component: {fileID: 2752341265348457326}
   - component: {fileID: 2752341265348457324}
   - component: {fileID: 2752341265348457325}
   m_Layer: 0
-  m_Name: farm0Prefab
+  m_Name: farm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -757,6 +756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resGenPanelOpened: 0
+  rawGenID: 0
   res0: {fileID: 11400000, guid: 08a9d0a87eb0e3843956e6fcb3233700, type: 2}
   res1: {fileID: 0}
   res2: {fileID: 0}
@@ -775,7 +775,6 @@ MonoBehaviour:
   loadCapLvl: 1
   loadCap: 4
   loadCapPrice: 666
-  rawGenID: 0
   state0: {fileID: 2752341265072995438}
   state1: {fileID: 1833103901920760367}
   priceTag: {fileID: 2752341263804328495}
@@ -783,30 +782,7 @@ MonoBehaviour:
   buildPrice: 120
   state0Active: 1
   state1Active: 0
-  BuildMenu: {fileID: 2752341265348457326}
   transport: {fileID: 2752341264939589468}
---- !u!114 &2752341265348457326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2752341265348457233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbb0c08bdca7cac469716ccf3d46f2da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingMenu: {fileID: 0}
-  rawGen: {fileID: 0}
-  farmButton: {fileID: 0}
-  foresterButton: {fileID: 0}
-  ironMineButton: {fileID: 0}
-  farmPrefab: {fileID: 6491755587654359219, guid: cc038acd37d5d4a4987ee0b42344dfa3,
-    type: 3}
-  foresterPrefab: {fileID: 0}
-  ironMinePrefab: {fileID: 0}
-  buildingOpened: 0
 --- !u!208 &2752341265348457324
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -817,7 +793,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.15, y: 0.5, z: 0.15}
+  m_Extents: {x: 0.51, y: 0.5, z: 0.47}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1

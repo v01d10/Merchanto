@@ -18,9 +18,9 @@ public class townfolk : MonoBehaviour
     public bool gotClothes;
     public bool gotWork;
 
-    public static townfolk instance;
+    public static townfolk Townfolk;
 
-    public townfolk(string tName, int tAge, bool man)
+    private townfolk(string tName, int tAge, bool tMan)
     {
         Name = tName;
         Age = tAge;
@@ -53,7 +53,7 @@ public class townfolk : MonoBehaviour
 
             alcoholAdiction = UnityEngine.Random.Range(0, 25);
 
-            townfolkManager.Townfolks.Add(new townfolk(tM.mNames[mNameID], tAge, true));
+            tM.addFolk(this);
             tM.freeTownfolksAmount++;
         }
         else
@@ -64,10 +64,11 @@ public class townfolk : MonoBehaviour
 
             alcoholAdiction = UnityEngine.Random.Range(0, 25);
 
-            townfolkManager.Townfolks.Add(new townfolk(tM.fNames[fNameID], tAge, false));
+            tM.addFolk(this);
             tM.freeTownfolksAmount++;
         }
     }
+
 
     void handleAlcohol()
     {
