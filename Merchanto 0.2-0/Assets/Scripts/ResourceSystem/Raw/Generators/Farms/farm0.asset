@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d31765b498ffa574cb30178f4d309ab7, type: 3}
+  m_Name: farm0
+  m_EditorClassIdentifier: 
+  res0: {fileID: 11400000, guid: 08a9d0a87eb0e3843956e6fcb3233700, type: 2}
+  res1: {fileID: 0}
+  res2: {fileID: 0}
+  res0Mined: 21.318867
+  res1Mined: 0
+  res2Mined: 0
+  genRate: 0.1
+  yield0: 1
+  yield1: 0
+  yield2: 0
+  genRateUpgadePrice: 506.25
+  genRateUpgradeLevel: 5
+  deliverySpeed: 0.3
+  deliverySpeedPrice: 400
+  deliverySpeedLevel: 3
+  loadCapacity: 4
+  loadCapPrice: 100
+  loadCapLevel: 1
